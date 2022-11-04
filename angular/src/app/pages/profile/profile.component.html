@@ -1,0 +1,138 @@
+<section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card">
+                    <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                                alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                style="width: 150px; z-index: 1">
+                            <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                style="z-index: 1;" (click)="openModal()">
+                                Edit profile
+                            </button>
+                        </div>
+
+                        <div class="ms-3" style="margin-top: 130px;">
+                            <h5>
+                                <!-- Name : --> {{ loggedinUser.firstname }} {{ loggedinUser.lastname }}
+                            </h5>
+                        </div>
+
+                    </div>
+                    <br />
+                    <br />
+
+                    <div class="card-body p-4 text-black">
+                        <div class="mb-5">
+                            <p class="lead fw-normal mb-1">About</p>
+                            <div class="p-4" style="background-color: #f8f9fa;">
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="col-md-6">
+                                            <strong>Email : </strong>
+                                            <p class="font-italic mb-1">{{ loggedinUser.email }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Phone : </strong>
+                                            <p class="font-italic mb-1">{{ loggedinUser.mobileno }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="col-md-6">
+                                            <strong>Address line1 : </strong>
+                                            <p class="font-italic mb-1">{{ loggedinUser.address.add_line1 }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>Address line 2 </strong>
+                                            <p class="font-italic mb-1">{{ loggedinUser.address.add_line2 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="col-md-6">
+                                            <strong>State : </strong>
+                                            <p class="font-italic mb-1">{{ loggedinUser.address.state }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <strong>City </strong>
+                                            <p class="font-italic mb-1">{{ loggedinUser.address.city }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal Popup For Update Profile -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #updateForm="ngForm">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">First Name:</label>
+                  <input type="text" class="form-control" name="firstname" required
+                  [(ngModel)]="user.firstname" >
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label" >Last Name:</label>
+                  <input type="text" class="form-control" name="lastname" required
+                  [(ngModel)]="user.lastname">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label" >Phone</label>
+                    <input type="text" class="form-control" name="mobileno" required
+                    [(ngModel)]="user.mobileno">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label" >Address Line1</label>
+                    <input type="text" class="form-control" name="add_line1" required
+                    [(ngModel)]="user.address.add_line1">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label" >Address Line 2</label>
+                    <input type="text" class="form-control" name="add_line2" required
+                    [(ngModel)]="user.address.add_line2">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label" >City</label>
+                    <input type="text" class="form-control" name="city" required
+                    [(ngModel)]="user.address.city">
+                  </div>
+                  <br/>
+                  <div class="form-group" >
+                    <select class="select btn-light" name="state" style="height: 50px; width: 250px;" required
+                    [(ngModel)]="user.address.state">
+                      <option value="" >Choose State  ....</option>
+                      <option value="MH">MH</option>
+                      <option value="MP">MP</option>
+                      <option value="UP">UP</option>
+                    </select>
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-outline-dark" (click)="updateUser(updateForm.value)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

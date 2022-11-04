@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: white;">User Management System</a>
+      <div class="d-flex">
+        <button *ngIf ="!loggedin()" class="btn btn-outline-light" type="submit" routerLink="/login">Login</button> 
+        &nbsp;
+        &nbsp;
+        <button *ngIf ="!loggedin()" class="btn btn-outline-light" type="submit" routerLink="/signup">Signup</button>
+        </div>
+
+        <div class="d-flex">
+          <button *ngIf ="loggedin()" class="btn btn-outline-light" type="submit" routerLink="/profile">Profile</button> 
+          &nbsp;
+          &nbsp;
+          <button *ngIf ="loggedin()" class="btn btn-outline-light" type="submit" routerLink="/login" (click)="logout()" (click)="Alert()">Logout</button>
+          </div>
+
+        <!-- <div *ngIf ="loggedin()" class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Account
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="/profile" >Profile</a>
+            <a class="dropdown-item" routerLink="/login" (click)="logout()" (click)="Alert()" >Logout</a>
+          </div>
+        </div> -->
+    </div>
+  </nav> 
