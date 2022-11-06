@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  // To open a Modal
+  // To open a Modal with prepopulated data
   openModal() {
     this.formModal.show();
     this.user = JSON.parse(localStorage.getItem('user') as any);
@@ -65,9 +65,10 @@ export class ProfileComponent implements OnInit {
       if (res.status) {
         Swal.fire("Update Successfully")
         localStorage.setItem('user', JSON.stringify(res.result))
-        console.log("result",res.result);
-        this.ngOnInit();
+        // console.log("result",res.result);
         this.closeModal();
+        this.ngOnInit();
+
 
       }
     })

@@ -28,11 +28,6 @@ export class AuthService {
     return this.http.post('http://localhost:8989/user/signup', data);
   }
 
-  // Simple Login API call
-  // login(data: any): Observable<any> {
-  //   return this.http.post('http://localhost:8989/user/login', data);
-  // }
-
   // Login API Call 
   async login(data: any): Promise<any> {
     this.clearData();
@@ -48,15 +43,6 @@ export class AuthService {
     return user;
   }
 
-
-  // Logout Function
-  logout() {
-    let removeItem = localStorage.removeItem("token")
-    if (removeItem == null) {
-      this.router.navigate(['login'])
-    }
-  }
-
   // Update API Call
   update(_id: any, data: any) {
     let userData = { ...data, _id };
@@ -65,7 +51,14 @@ export class AuthService {
       'http://localhost:8989/user/update', userData);
   }
 
+  // Forget Password
+  forgetpassword(email: string): Observable<any> {
+    return this.http.post('http://localhost:8989/user/forgetpassword', email);
+  }
 
-
+  // Reset Password
+  resetpassword(data: any): Observable<any> {
+    return this.http.post('http://localhost:8989/user/resetpassword', data);
+  }
 
 }

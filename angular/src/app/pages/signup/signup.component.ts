@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       'password': ['', [Validators.required, Validators.minLength(8)]],
       'confirmpassword': ['', Validators.required],
-      'add_line1': new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
+      'add_line1': new FormControl('', [Validators.required]),
       'add_line2': [''],
       state: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')]),
       city: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]+$')])
